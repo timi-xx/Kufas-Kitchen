@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home | KUFAS KITCHEN</title>
+    <link rel="icon" href="kuf.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e50914;
+            --secondary: #e50914;
+            --accent: #e50914;
+            --light: #f8f9fa;
+            --dark: #000;
+            --text: #333333;
+            --light-gray: #e9ecef;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html,body { height: 100%; }
+        body {
+            font-family: 'Poppins';
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1,h2,h3,h4 {
+            font-family: 'Trebuchet MS';
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.2; letter-spacing: -0.5px; }
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        p { margin-bottom: 1.5rem; }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--secondary);
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn:hover {
+            background: #f5c518;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        .btn-outline:hover { background: var(--secondary); color: white; }
+
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Kuf3.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-content { max-width: 700px; padding-top: 80px; }
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 5);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0,5);
+        }
+        .hero .btn { animation: fadeInUp 1s ease 0.4s forwards; opacity: 0; }
+
+        .tours-section { padding: 100px 0; background: var(--light); }
+        .tour-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
+        .tour-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: var(--transition); }
+        .tour-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        .card-image { height: 250px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .tour-card:hover .card-image img { transform: scale(1.05); }
+        .card-content { padding: 25px; }
+        .card-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .card-location { display:flex; align-items:center; color:var(--primary); margin-bottom:15px; font-weight:500; }
+        .card-location i { margin-right: 8px; }
+
+        .card-details { display:flex; justify-content:space-between; margin:20px 0; border-top:1px solid var(--light-gray); padding-top:20px; }
+        .detail-item { text-align:center; }
+        .detail-item i { font-size:1.2rem; color:var(--secondary); margin-bottom:8px; }
+        .detail-label { font-size:0.85rem; color:#777; }
+        .detail-value { font-weight:600; font-size:1.1rem; }
+
+        .features-section { padding:100px 0; background:white; }
+        .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; margin-top:50px; }
+        .feature-card { text-align:center; padding:40px 30px; border-radius:10px; background:var(--light); transition:var(--transition); border:1px solid rgba(0,0,0,0.05); }
+        .feature-card:hover { transform:translateY(-10px); box-shadow:0 15px 30px rgba(0,0,0,0.08); }
+        .feature-icon { width:80px; height:80px; background:var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 25px; color:white; font-size:2rem; }
+        .feature-card h3 { font-size:1.4rem; margin-bottom:15px; }
+
+        .testimonials-section { padding:100px 0; background: linear-gradient(135deg, var(--primary), #e50914); color:white; text-align:center; }
+        .testimonials-section h2 { color:white; }
+        .testimonials-section h2:after { background:white; }
+        .testimonial-container { max-width:800px; margin:50px auto 0; padding:0 20px; }
+        .testimonial { background:#e50914; border-radius:10px; padding:40px; margin:20px 0; }
+        .testimonial-text { font-style: italic; font-size:1.1rem; margin-bottom:20px; position:relative; }
+        .testimonial-text:before, .testimonial-text:after { content:'"'; font-size:3rem; color:#e50914; position:absolute; }
+        .testimonial-text:before { top:-20px; left:-15px; }
+        .testimonial-text:after { content:'"'; bottom:-40px; right:-15px; }
+        .testimonial-author { font-weight:600; font-size:1.1rem; color:white; }
+
+        .newsletter-section { padding:80px 0; background:white; }
+        .newsletter-container { max-width:700px; margin:0 auto; text-align:center; }
+        .newsletter-form { display:flex; margin-top:30px; }
+        .newsletter-input { flex:1; padding:15px 20px; border:2px solid var(--light-gray); border-radius:4px 0 0 4px; font-size:1rem; outline:none; transition:var(--transition); }
+        .newsletter-input:focus { border-color:var(--accent); }
+        .newsletter-btn { padding:0 30px; border-radius:0 4px 4px 0; border:none; }
+
+        footer { background:var(--dark); color:white; padding:70px 0 0; }
+        .footer-content { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:40px; margin-bottom:50px; }
+        .footer-column h3 { color:white; font-size:1.4rem; margin-bottom:25px; position:relative; padding-bottom:15px; }
+        .footer-column h3:after { content:''; position:absolute; bottom:0; left:0; width:50px; height:3px; background:var(--secondary); }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:12px; }
+        .footer-links a { color:#bbb; text-decoration:none; transition:var(--transition); }
+        .footer-links a:hover { color:var(--secondary); padding-left:5px; }
+        .footer-contact li { display:flex; margin-bottom:15px; }
+        .footer-contact i { color:var(--secondary); margin-right:15px; font-size:1.2rem; min-width:25px; }
+        .social-links { display:flex; margin-top:20px; text-decoration: none; }
+        .social-links a { display:flex; align-items:center; justify-content:center; width:40px; height:40px; background:#e50914; color:white; border-radius:50%; margin-right:10px; transition:var(--transition); text-decoration: none;}
+        .social-links a:hover { background:var(--secondary); transform:translateY(-3px); }
+        .copyright { text-align:center; padding:25px 0; border-top:1px solid #e50914; color:#bbb; font-size:0.9rem; }
+
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+        @media (max-width: 992px) {
+            h1 { font-size:3rem; }
+            h2 { font-size:2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { min-height:600px; }
+            h1 { font-size:2.5rem; }
+            h2 { font-size:2rem; }
+
+
+            .newsletter-form { flex-direction:column; }
+            .newsletter-input { border-radius:4px; margin-bottom:15px; }
+            .newsletter-btn { border-radius:4px; width:100%; }
+        }
+
+        @media (max-width: 576px) {
+            .hero { text-align:center; }
+            .hero-content { margin:0 auto; }
+            .tour-cards { grid-template-columns: 1fr; }
+            .card-details { flex-wrap:wrap; }
+            .detail-item { width:50%; margin-bottom:15px; }
+        }
+
+               header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            padding: 20px 0;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 12px;
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo i { margin-right: 8px; color: var(--secondary); font-size: 1.1rem; }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: verdana;
+        }
+
+        .btn:hover {
+            background: #b8070f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            position: relative;
+            z-index: 1050;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav li { margin-left: 0; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        nav a:hover { color: var(--secondary); }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        nav a:hover:after { width: 100%; }
+
+        /* Hamburger button (hidden desktop) */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--dark);
+            position: relative;
+            z-index: 1110;
+            padding: 8px;
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            background: rgba(0,0,0,0.88);
+            color: #fff;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .mobile-overlay[aria-hidden="true"] {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-6%);
+        }
+        .mobile-overlay[aria-hidden="false"] {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .mobile-overlay .overlay-inner {
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+        }
+
+        .mobile-overlay nav ul {
+            flex-direction: column;
+            gap: 24px;
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0;
+        }
+
+        .mobile-overlay nav a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            padding: 8px 12px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .mobile-overlay nav a:after { display: none; } 
+
+        .mobile-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.12);
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 1210;
+        }
+        .mobile-close:focus { outline: 3px solid rgba(255,255,255,0.12); }
+
+        .overlay-brand {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.95);
+        }
+
+        @media (min-width: 769px) {
+            .nav-toggle { display: none; }
+            .mobile-overlay { display: none !important; }
+            nav { margin-left: auto; }
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                padding: 14px 0;
+                background: rgba(255,255,255,0.98);
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                font-size: 1.2rem;
+                color: var(--dark);
+                background: transparent;
+                border: none;
+            }
+
+            .header-container {
+                justify-content: space-between;
+            }
+
+            nav { display: none; }
+
+    .mobile-overlay nav {
+        display: block !important;
+    }  
+
+            .mobile-overlay {
+                display: none;
+            }
+
+            .logo { font-size: 1.5rem; }
+
+            .nav-toggle { padding-left: 18px; }
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="brand-wrap">
+                <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+
+                <a href="#" class="logo" aria-label="Kufas Kitchen Home">
+                    <i class="fas fa-utensils" aria-hidden="true"></i>
+                    KUFAS KITCHEN
+                </a>
+            </div>
+
+            <nav aria-label="Primary navigation" role="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Menu.html">Menu</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+
+     <div class="overlay-inner">
+
+    <span class="overlay-brand">
+        <i class="fas fa-utensils"></i> KUFAS KITCHEN
+    </span>
+
+    <nav aria-label="Mobile primary navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Menu.html">Menu</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div style="margin-top:30px;">
+        <a href="Menu.html" class="btn" style="
+            font-size:1.1rem;
+            padding:12px 28px;
+            border-radius:30px;
+            display:inline-block;
+        ">
+            View Our Menu
+        </a>
+    </div>
+
+    <div class="overlay-social" style="
+        margin-top:40px;
+        display:flex;
+        justify-content:center;
+        gap:18px;
+    ">
+        <a href="https://wa.me/+2347066880377"
+           style="
+               width:45px;
+               height:45px;
+               background:#e50914;
+               border-radius:50%;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               color:white;
+               font-size:1.2rem;
+               text-decoration:none;
+               transition:0.3s;
+           ">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <a href="https://instagram.com"
+           style="
+               width:45px;
+               height:45px;
+               background:#e50914;
+               border-radius:50%;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               color:white;
+               font-size:1.2rem;
+               text-decoration:none;
+               transition:0.3s;
+           ">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+</div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to KUFAS KITCHEN</h1>
+                <p>Where authentic taste meets modern elegance.</p>
+                <a href="Menu.html" class="btn">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tours-section">
+        <div class="container">
+            <h2>Chef's Specials</h2>
+            <div class="tour-cards">
+                <div class="tour-card">
+                    <div class="card-image">
+                        <img src="J1.jpg" alt="Jollof rice with chicken">
+                    </div>
+                    <div class="card-content">
+                        <h3>Jollof Rice</h3>
+                        <div class="card-location">
+                            <!-- <i class="fas fa-map-marker-alt"></i>
+                            Lancaster County, PA -->
+                        </div>
+                        <p>Slow-cooked,seasoned beautifully,and served fresh.</p>
+                        <a href="Menu.html" class="btn btn-outline">Order</a>
+                    </div>
+                </div>
+
+                <div class="tour-card" id="order">
+                    <div class="card-image">
+                        <img src="F1.jpg" alt="fried rice with chicken">
+                    </div>
+                    <div class="card-content">
+                        <h3>Fried Rice</h3>
+                        <div class="card-location"></div>
+                        <p>Light,refreshing and full of taste.</p>
+                        <a href="Menu.html" class="btn btn-outline">Order</a>
+                    </div>
+                </div>
+
+                <div class="tour-card">
+                    <div class="card-image">
+                        <img src="S1.jpg" alt="swallow (semo)">
+                    </div>
+                    <div class="card-content">
+                        <h3>Swallow</h3>
+                        <div class="card-location"></div>
+                        <p>Made with carefully sourced ingredients for an authentic experience.</p>
+                        <a href="Menu.html" class="btn btn-outline">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2>KUFAS KITCHEN</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <h3>Authentic Recipes</h3>
+                    <p>Passed down and perfected through generations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-list-ul"></i></div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>Sourced daily,cooked with passion.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+                    <h3>Affordable Luxury</h3>
+                    <p>Quality meals at the right price.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">You should without a doubt employ the services of KUFAS INTEGRATED SERVICES to cater for your program! They cater a wide variety of events at affordable price ranges.</p>
+                    <p class="testimonial-author">- Q.S IVAMBE</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">We have worked with KUFAS INTEGRATED SERVICES on multiple occasions and we must acknowledge their wealth of experience and competence in client satisfaction.</p>
+                    <p class="testimonial-author">- EGWURUBE MATTHEW</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">Absolutely delicious! Highly recommended!</p>
+                    <p class="testimonial-author">- Osasere Obinah</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">The best dining experience i've had in years. Worth every penny!</p>
+                    <p class="testimonial-author">- Owolabi Timileyin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for exclusive offers, new meal announcements, and food inspiration.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="btn newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KUFAS KITCHEN</h3>
+                    <p>Crafted with Passion,Served with Pride.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/+2347066880377"><i class="fab fa-whatsapp"></i></a>
+                        <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <a href="instagram.com"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#"><i class="fab fa-youtube"></i></a> -->
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Menu.html">Menu</a></li>
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column" id="contact">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i><span>Plot 306,Ayihe,behind owners occupier,Makurdi.Benue State,Nigeria </span></li>
+                        <li><i class="fas fa-phone"></i><span>+234 706-688-0377</span></li>
+                        <li><i class="fas fa-envelope"></i><span>info@kufaskitchen.com</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 KUFAS KITCHEN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            let currentIndex = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => {
+                    testimonial.style.display = 'none';
+                });
+                testimonials[index].style.display = 'block';
+            }
+
+            function nextTestimonial() {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                showTestimonial(currentIndex);
+            }
+
+            showTestimonial(currentIndex);
+            setInterval(nextTestimonial, 5000);
+        });
+    </script>
+
+    <script>
+        (function(){
+            const btn = document.querySelector('.nav-toggle');
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            if(!btn || !header || !nav) return;
+
+            function openMenu(){
+                header.classList.add('expanded');
+                btn.setAttribute('aria-expanded', 'true');
+                document.body.style.paddingTop = header.offsetHeight + 'px';
+            }
+
+            function closeMenu(){
+                header.classList.remove('expanded');
+                btn.setAttribute('aria-expanded', 'false');
+                document.body.style.paddingTop = null;
+            }
+
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                header.classList.contains('expanded') ? closeMenu() : openMenu();
+            });
+
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+            document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeMenu(); });
+
+            document.addEventListener('click', function(e){
+                if(header.classList.contains('expanded') && !header.contains(e.target)) closeMenu();
+            });
+
+            window.addEventListener('resize', function(){
+                if(window.innerWidth > 768 && header.classList.contains('expanded')) {
+                    closeMenu();
+                }
+            });
+        })();
+    </script>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') && link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        (function(){
+            const openBtn = document.getElementById('navToggle');
+            const overlay = document.getElementById('mobileOverlay');
+            const closeBtn = document.getElementById('mobileClose');
+            const focusableSelectors = 'a, button, input, textarea, [tabindex]:not([tabindex="-1"])';
+
+            if (!openBtn || !overlay || !closeBtn) return;
+
+            function openMenu() {
+                overlay.setAttribute('aria-hidden', 'false');
+                openBtn.setAttribute('aria-expanded', 'true');
+                // Prevent background scroll
+                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden';
+                // Move focus to close button for accessibility
+                closeBtn.focus();
+            }
+
+            function closeMenu() {
+                overlay.setAttribute('aria-hidden', 'true');
+                openBtn.setAttribute('aria-expanded', 'false');
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                openBtn.focus();
+            }
+
+            openBtn.addEventListener('click', function(e){
+                e.stopPropagation();
+                openMenu();
+            });
+
+            closeBtn.addEventListener('click', function(e){
+                e.stopPropagation();
+                closeMenu();
+            });
+
+            overlay.addEventListener('click', function(e){
+                if (e.target === overlay) closeMenu();
+            });
+
+            document.addEventListener('keydown', function(e){
+                if (e.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') {
+                    closeMenu();
+                }
+                if (overlay.getAttribute('aria-hidden') === 'false' && e.key === 'Tab') {
+                    const focusables = Array.from(overlay.querySelectorAll(focusableSelectors)).filter(el => !el.hasAttribute('disabled'));
+                    if (focusables.length === 0) return;
+                    const first = focusables[0];
+                    const last = focusables[focusables.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
+                }
+            });
+
+            overlay.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', function(){
+                    setTimeout(function(){ closeMenu(); }, 50);
+                });
+            });
+
+            overlay.setAttribute('aria-hidden', 'true');
+
+        })();
+    </script>
+</body>
+</html>
