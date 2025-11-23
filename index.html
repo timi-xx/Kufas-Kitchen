@@ -91,7 +91,7 @@
             height: 100vh;
             min-height: 700px;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('Kuf3.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Kuf3s.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             color: white;
@@ -303,7 +303,6 @@
         }
         nav a:hover:after { width: 100%; }
 
-        /* Hamburger button (hidden desktop) */
         .nav-toggle {
             display: none;
             background: transparent;
@@ -455,6 +454,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="Menu.html">Menu</a></li>
                     <li><a href="About.html">About</a></li>
+                    <li><a href="Services.html">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -477,6 +477,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="Menu.html">Menu</a></li>
             <li><a href="About.html">About</a></li>
+            <li><a href="Services.html">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -541,7 +542,7 @@
             <div class="hero-content">
                 <h1>Welcome to KUFAS KITCHEN</h1>
                 <p>Where authentic taste meets modern elegance.</p>
-                <a href="Menu.html" class="btn">Order Now</a>
+                <a href="Services.html" class="btn">View Services</a>
             </div>
         </div>
     </section>
@@ -632,12 +633,12 @@
                 </div>
 
                 <div class="testimonial">
-                    <p class="testimonial-text">Absolutely delicious! Highly recommended!</p>
+                    <p class="testimonial-text">Absolutely flawless catering service! Highly recommended!</p>
                     <p class="testimonial-author">- Osasere Obinah</p>
                 </div>
 
                 <div class="testimonial">
-                    <p class="testimonial-text">The best dining experience i've had in years. Worth every penny!</p>
+                    <p class="testimonial-text">The food was amazing! Everyone at our event loved it.</p>
                     <p class="testimonial-author">- Owolabi Timileyin</p>
                 </div>
             </div>
@@ -677,6 +678,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="Menu.html">Menu</a></li>
                         <li><a href="About.html">About</a></li>
+                        <li><a href="Services.html">Services</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -835,10 +837,8 @@
             function openMenu() {
                 overlay.setAttribute('aria-hidden', 'false');
                 openBtn.setAttribute('aria-expanded', 'true');
-                // Prevent background scroll
                 document.documentElement.style.overflow = 'hidden';
                 document.body.style.overflow = 'hidden';
-                // Move focus to close button for accessibility
                 closeBtn.focus();
             }
 
